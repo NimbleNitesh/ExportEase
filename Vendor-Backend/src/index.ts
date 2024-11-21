@@ -1,13 +1,27 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import { myDataSource } from "./app-data-source";
+import cors from 'cors';
+import  userRouter  from './routes/user.routes';
 
-const PORT = process.env.PORT || 3000;
+const main = async () => {  
+  const PORT = process.env.PORT || 3000;
+  const app = express();
 
-const app = express();
-
-app.get('/', (_req: Request, res: Response) => {
-  res.send('Hello World!');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  app.use(cors());
+  app.use(express.json());
+  app.use('/api/v1/auth', userRouter);
+  myDataSource.initialize()
+    .then(() => {
+      app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+      });
+    console.log('Database connected');
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+console.log('Nitesh Srivastava')
+main().catch((err) => {
+  console.error(err);
 });
