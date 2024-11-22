@@ -10,6 +10,10 @@ import * as Yup from "yup";
 import { useFormik, Form, FormikProvider } from "formik";
 import { Link } from "react-router-dom";
 
+
+import { postMethod } from "../library/api";
+import { registerUrl } from "../library/constant";
+
 export default function RegisterPage() {
   const LoginSchema = Yup.object().shape({
     name: Yup.string().required("name is required"),
@@ -31,7 +35,8 @@ export default function RegisterPage() {
     },
     validationSchema: LoginSchema,
     onSubmit: (data) => {
-      console.log(data);
+      // console.log(data);
+      postMethod(registerUrl,data)
 
       setTimeout(() => {
         formik.setSubmitting(false);

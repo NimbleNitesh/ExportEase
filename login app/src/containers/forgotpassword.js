@@ -7,6 +7,9 @@ import "../assets/css/login.css";
 import * as Yup from "yup";
 import { useFormik, Form, FormikProvider } from "formik";
 
+import { postMethod } from "../library/api";
+import { fpasswordUrl } from "../library/constant";
+
 export default function ForgotpasswordPage() {
   const ForgotSchema = Yup.object().shape({
     email: Yup.string().required("Email is required"),
@@ -18,7 +21,8 @@ export default function ForgotpasswordPage() {
     },
     validationSchema: ForgotSchema,
     onSubmit: (data) => {
-      console.log(data);
+      // console.log(data);
+      postMethod(fpasswordUrl,data);
 
       setTimeout(() => {
         formik.setSubmitting(false);
