@@ -1,9 +1,9 @@
-import { User } from "src/entities/user.entity";
+import { User } from "../entities/user.entity";
 import { Request, Response } from "express";
-import { encrypt } from "src/utils/encrypt";
-import myDataSource  from "src/app-data-source";
+import { encrypt } from "../utils/encrypt";
+import myDataSource  from "../app-data-source";
 import { v4 } from 'uuid';
-import { sendMail } from "src/utils/sendMail";
+import { sendMail } from "../utils/sendMail";
 
 export class UserController {
     static async register(req: Request, res: Response) {

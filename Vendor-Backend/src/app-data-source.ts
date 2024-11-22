@@ -9,8 +9,8 @@ const myDataSource: DataSource = new DataSource({
     username: process.env.POSTGRESDB_USER as string,
     password: process.env.POSTGRESDB_ROOT_PASSWORD as string,
     database: process.env.POSTGRESDB_DATABASE as string,
-    entities: ["src/**/*.entity{.ts,.js}"], // where our entities reside
-    migrations: ["src/db/migrations/*{.ts,.js}"], // where our migrations reside
+    entities: ["dist/**/*.entity{.ts,.js}"], // where our entities reside
+    migrations: ["src/migrations/*{.js}"], // where our migrations reside
     logging: process.env.NODE_ENV === "dev" ? false : false,
     synchronize: process.env.NODE_ENV === "dev" ? false : false
 });
