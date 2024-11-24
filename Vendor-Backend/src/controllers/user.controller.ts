@@ -1,7 +1,7 @@
 import { User } from "../entities/user.entity";
 import { Request, Response } from "express";
 import { encrypt } from "../utils/encrypt";
-import myDataSource  from "../app-data-source";
+import myDataSource  from "../../app-data-source";
 import { v4 } from 'uuid';
 import { sendMail } from "../utils/sendMail";
 

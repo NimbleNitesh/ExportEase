@@ -1,5 +1,5 @@
 import express from 'express';
-import myDataSource from "./app-data-source";
+import myDataSource from "../app-data-source";
 import cors from 'cors';
 import  userRouter  from './routes/user.routes';
 import { redisClient } from './redis-client';
@@ -37,7 +37,8 @@ const main = async () => {
       app.listen(PORT, () => {
         console.log(`Server is running on http://localhost:${PORT}`);
       });
-    console.log('Database connected');
+    console.log('Database connected. Loaded Entities');
+    console.log(myDataSource.options.entities);
     })
     .catch((err) => {
       console.error(err);
